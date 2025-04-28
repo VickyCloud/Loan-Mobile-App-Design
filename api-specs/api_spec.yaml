@@ -1,0 +1,55 @@
+
+openapi: 3.0.0
+info:
+  title: PT XYZ Loan App API
+  version: 1.0.0
+paths:
+  /register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                email: { type: string }
+                phone: { type: string }
+                password: { type: string }
+                photo: { type: string }
+                ktp: { type: string }
+      responses:
+        '201':
+          description: User created
+  /login:
+    post:
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: { type: string }
+                password: { type: string }
+      responses:
+        '200':
+          description: Login success
+  /loan/apply:
+    post:
+      summary: Apply for loan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount: { type: number }
+                tenor_months: { type: integer }
+      responses:
+        '200':
+          description: Loan application received
